@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE metadata SYSTEM "http://thor-f5.er.usgs.gov/ngtoc/metadata/fgdc-std-001-1998.dtd">
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Woolpert</origin>
+      	<pubdate>20190830</pubdate>
+      	<title>OH Columbus 2019 B19; Hydro-Flattened Bare-Earth DEM</title>
+        <geoform>Raster digital data</geoform>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>Product: 1-foot bare-earth raster digital elevation model (DEM) data tiles in GeoTIFF format.
+      	Geographic Extent: Approximately 755 square miles of QL0 lidar data across the City of Columbus, Ohio, the full coverage of Franklin County, and partial coverage of Delaware, Fairfield, Licking, Madison, Marion, Pickaway, and Union Counties, Ohio.
+      	Dataset Description: The OH Columbus 2019 B19 lidar project called for the planning, acquisition, processing, and production of derivative products of lidar data to be collected at a nominal pulse spacing (NPS) of 0.29 meters. Project specifications were based on the U.S. Geological Survey National Geospatial Program Base Lidar Specification, Version 1.3. The data was originally developed based on a horizontal datum/projection of NAD83 (HARN) State Plane Ohio South Zone, US Survey Feet, EPSG Code 3754, and a vertical datum of NAVD88 (GEOID12B) US Survey Feet. DEM data was delivered as processed GeoTIFF files formatted to 12,138 individual 1,250-foot x 1,250-foot tiles.
+      	Ground Conditions: Lidar was collected from March 24, 2019 through April 7, 2019 by Woolpert while no snow was on the ground and rivers were at or below normal levels. In order to post process the lidar data to meet task order specifications and meet ASPRS vertical accuracy guidelines, Woolpert established 132 ground control points that were used to calibrate the lidar to known ground locations established throughout the project area. An additional 92 checkpoints (55 NVA points and 37 VVA points), were collected and used to assess the vertical accuracy of the data. These checkpoints were not used to calibrate or post process the data.</abstract>
+    	<purpose>This project will support the 3DEP mission, the Natural Resources Conservation Service (NRCS) high resolution elevation enterprise program and the Federal Emergency Management Agency (FEMA) Risk Mapping, Assessment and Planning (MAP) program.</purpose>
+      <supplinf>
+      	USGS Contract No. G16PC00022; Task Order No. 140G0219F0111; Contractor: Woolpert.
+        Raster File Type = TIFF
+        Bit Depth/Pixel Type = 32-bit float
+        Raster Cell Size = 1 US Survey Foot
+        Interpolation or Re-sampling Technique = Triangulated Irregular Network
+        Required Vertical Accuracy = 19.6 cm NVA
+      </supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <rngdates>
+        	<begdate>20190324</begdate>
+        	<enddate>20190407</enddate>
+        </rngdates>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+    	<progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+  	<spdom>
+  		<bounding>
+  			<westbc>-83.2621850436</westbc>
+  			<eastbc>-82.7090376626</eastbc>
+  			<northbc>40.438002565</northbc>
+  			<southbc>39.7492762916</southbc>
+  		</bounding>
+  		<lboundng>
+  			<leftbc>1755000.0</leftbc>
+  			<rightbc>1910000.0</rightbc>
+  			<topbc>888750.0</topbc>
+  			<bottombc>637500.0</bottombc>
+  		</lboundng>
+  	</spdom>
+    <keywords>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>Model</themekey>
+        <themekey>Raster</themekey>
+        <themekey>DEM</themekey>
+        <themekey>Remote Sensing</themekey>
+        <themekey>Elevation Data</themekey>
+        <themekey>Lidar</themekey>
+      </theme>
+      <place>
+        <placekt>None</placekt>
+        <placekey>United States</placekey>
+      	<placekey>Ohio</placekey>
+      	<placekey>Delaware County</placekey>
+      	<placekey>Fairfield County</placekey>
+      	<placekey>Franklin County</placekey>
+      	<placekey>Licking County</placekey>
+      	<placekey>Madison County</placekey>
+      	<placekey>Marion County</placekey>
+      	<placekey>Pickaway County</placekey>
+      	<placekey>Union County</placekey>
+      	<placekey>City of Columbus</placekey>
+      </place>
+    </keywords>
+    <accconst>No restrictions apply to these data.</accconst>
+    <useconst>None. However, users should be aware that temporal changes may have occurred since this dataset was collected and that some parts of these data may no longer represent actual surface conditions. Users should not use these data for critical applications without a full awareness of its limitations. Acknowledgement of the U.S. Geological Survey would be appreciated for products derived from these data.
+      The information contained in these data is dynamic and may change over time. The data are not better than the original sources from which they were derived. It is the responsibility of the data user to use the data appropriately and within the limitations of the data for which it was requested and prepared, in general, and these data in particular. The related graphics are intended to aid the data user in acquiring relevant data. It is not appropriate to use the related graphics as data. Woolpert gives no warranty, expressed or implied, as to the accuracy, reliability, or completeness of these data. It is strongly recommended that these data are directly acquired from a Woolpert server, and not indirectly through other sources which may have changed the data in some way. Although these data have been processed successfully upon Woolpert’s computer system, no warranty, expressed or implied, is made regarding the utility of the data on another system, or for general or scientific purposes; nor shall the act of distribution constitute any such warranty. This disclaimer applies both to individual use of the data and aggregate use with other data.</useconst>
+    <native>Microsoft Windows 10 Version 1607 (Build 14393.2189); ArcMap 10.3; ArcCatalog 10.3; TerraScan ver. 17; TerraModeler ver. 17; Geocue 2017.2.20.0.</native>
+  </idinfo>
+  <dataqual>
+    <logic>Data covers the entire area specified for this project.</logic>
+    <complete>Datasets contain complete coverage of tiles. No points have been removed or excluded. A visual qualitative assessment was performed to ensure data completeness. There are no void areas or missing data. The DEM is of good quality and data passes Non-Vegetated and Vegetated Vertical Accuracy specifications.</complete>
+    <posacc>
+      <vertacc>
+      	<vertaccr>The project specifications require the accuracy (ACCz) of the derived DEM be calculated and reported in two ways: 1. The required NVA is: 9.8 cm at a 95% confidence level, derived according to NSSDA, i.e., based on RMSE of 5 cm in non-vegetated land cover classes. This is a required accuracy. The NVA was tested with 55 checkpoints located in non-vegetated areas. 2. Vegetated Vertical Accuracy (VVA): VVA shall be reported for vegetated land cover classes. The target VVA is: 15 cm at the 95th percentile, derived according to ASPRS Guidelines, Vertical Accuracy Reporting for Lidar Data, i.e., based on the 95th percentile error in all vegetated land cover classes combined. This is a target accuracy. The VVA was tested with 37 checkpoints located in vegetated areas. The checkpoints were distributed throughout the project area and were surveyed using GPS techniques. See survey report for additional survey methodologies. AccuracyZ has been tested to meet 19.6 cm or better Non-Vegetated Vertical Accuracy at 95% confidence level using RMSE(z) x 1.9600 as defined by the National Standards for Spatial Data Accuracy (NSSDA); assessed and reported using National Digital Elevation Program (NDEP)/ASRPS Guidelines.</vertaccr>
+        <qvertpa>
+          <vertaccv>0.052</vertaccv>
+        	<vertacce>Tested 0.052 meters NVA at a 95% confidence level using RMSE(z) 0.027 x 1.9600 as defined by the National Standards for Spatial Data Accuracy (NSSDA). The NVA of the DEM was calculated using 55 independent checkpoints located in non-vegetated land cover categories.</vertacce>
+        </qvertpa>
+        <qvertpa>
+          <vertaccv>0.122</vertaccv>
+        	<vertacce>Tested 0.122 meters VVA was calculated using 37 checkpoints located in vegetated land cover categories at the 95th percentile, derived according to ASPRS Guidelines, Vertical Accuracy Reporting for Lidar Data. Tested against the DEM.</vertacce>
+        </qvertpa>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>Woolpert</origin>
+            <pubdate>20190830</pubdate>
+            <title>Lidar Acquisition</title>
+            <geoform>Lidar point cloud</geoform>
+            <pubinfo>
+            	<pubplace>Dayton, OH</pubplace>
+            	<publish>Woolpert</publish>
+            </pubinfo>
+          </citeinfo>
+        </srccite>
+        <typesrc>Digital data</typesrc>
+        <srctime>
+          <timeinfo>
+            <rngdates>
+            	<begdate>20190324</begdate>
+            	<enddate>20190407</enddate>
+            </rngdates>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>OH Columbus 2019 B19 - Lidar Point Cloud Data</srccitea>
+        <srccontr>This dataset includes airborne lidar data point cloud data acquired as part of this task order. This data was used to create the required derivative lidar products.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>Woolpert</origin>
+            <pubdate>20190830</pubdate>
+            <title>Survey Control Acquisition</title>
+            <geoform>Vector digital data and tabular digital data</geoform>
+            <pubinfo>
+              <pubplace>Dayton, OH</pubplace>
+              <publish>Woolpert</publish>
+            </pubinfo>
+          </citeinfo>
+        </srccite>
+        <typesrc>Digital data</typesrc>
+        <srctime>
+          <timeinfo>
+            <rngdates>
+              <begdate>20180531</begdate>
+              <enddate>20180730</enddate>
+            </rngdates>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>OH Columbus 2019 B19 - Surveyed Control Points</srccitea>
+        <srccontr>This dataset includes ground control and QA/QC checkpoints collected as part of this task order. These points were used in the calibration and accuracy testing of the lidar point cloud and DEM data.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>Woolpert</origin>
+            <pubdate>20190830</pubdate>
+            <title>Hydro Breaklines</title>
+            <geoform>Vector digital data</geoform>
+            <pubinfo>
+              <pubplace>Dayton, OH</pubplace>
+              <publish>Woolpert</publish>
+            </pubinfo>
+          </citeinfo>
+        </srccite>
+        <typesrc>Digital data</typesrc>
+        <srctime>
+          <timeinfo>
+            <sngdate>
+              <caldate>20190830</caldate>
+            </sngdate>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>OH Columbus 2019 B19 - Breaklines</srccitea>
+        <srccontr>This dataset includes hydro breaklines collected as part of this task order.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>Woolpert</origin>
+            <pubdate>20190830</pubdate>
+            <title>Data extent</title>
+            <geoform>Vector digital data</geoform>
+            <pubinfo>
+              <pubplace>Dayton, OH</pubplace>
+              <publish>Woolpert</publish>
+            </pubinfo>
+          </citeinfo>
+        </srccite>
+        <typesrc>Digital data</typesrc>
+        <srctime>
+          <timeinfo>
+            <sngdate>
+              <caldate>20190830</caldate>
+            </sngdate>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>OH Columbus 2019 B19 - Data Extent</srccitea>
+        <srccontr>The data extent was created in shapefile format. The shapefile was buffered by 100-meters. It was used in acquisition planning and to clip the final deliverable data.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>Woolpert</origin>
+            <pubdate>20190830</pubdate>
+            <title>Tile index</title>
+            <geoform>Vector digital data</geoform>
+            <pubinfo>
+              <pubplace>Dayton, OH</pubplace>
+              <publish>Woolpert</publish>
+            </pubinfo>
+          </citeinfo>
+        </srccite>
+        <typesrc>Digital data</typesrc>
+        <srctime>
+          <timeinfo>
+            <sngdate>
+              <caldate>20190830</caldate>
+            </sngdate>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>OH Columbus 2019 B19 - Tile Index</srccitea>
+      	<srccontr>The tile index was created in shapefile format. Tiles have a size of 1,250-feet x 1,250-feet. Tile names were derived from the OGRIP naming schema. This index was used to create the tiled deliverables for this project.</srccontr>
+      </srcinfo>
+      <procstep>
+        <procdesc>Hydro-Flattened Digital Elevation Models (DEMs): Class 2 (ground) lidar points in conjunction with the hydro breaklines as well bridge breaklines were used to create a 1-foot hydro-flattened bare-earth raster DEM. Using automated scripting routines within ArcMap, an GeoTIFF file was created for each tile. Each surface is reviewed using Global Mapper to check for any surface anomalies or incorrect elevations found within the surface.</procdesc>
+        <srcused>OH Columbus 2019 B19 - Lidar Point Cloud Data</srcused>
+        <srcused>OH Columbus 2019 B19 - Surveyed Control Points</srcused>
+        <srcused>OH Columbus 2019 B19 - Breaklines</srcused>
+        <srcused>OH Columbus 2019 B19 - Data Extent</srcused>
+        <srcused>OH Columbus 2019 B19 - Tile Index</srcused>
+        <procdate>20190830</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct>Raster</direct>
+    <rastinfo>
+      <rasttype>Pixel</rasttype>
+    	<rowcount>1250</rowcount>
+    	<colcount>1250</colcount>
+    </rastinfo>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <gridsys>
+          <gridsysn>State Plane Coordinate System 1983</gridsysn>
+          <spcs>
+          	<spcszone>3402</spcszone>
+          	<lambertc>
+          		<stdparll>38.73333333333333</stdparll>
+          		<stdparll>40.03333333333333</stdparll>
+          		<longcm>-82.5</longcm>
+          		<latprjo>38.0</latprjo>
+          		<feast>1968500.0</feast>
+          		<fnorth>0.0</fnorth>
+          	</lambertc>
+          </spcs>
+        </gridsys>
+        <planci>
+          <plance>row and column</plance>
+          <coordrep>
+            <absres>1</absres>
+            <ordres>1</ordres>
+          </coordrep>
+        	<plandu>survey feet</plandu>
+        </planci>
+      </planar>
+      <geodetic>
+      	<horizdn>North American Datum of 1983 (HARN)</horizdn>
+        <ellips>Geodetic Reference System 1980</ellips>
+        <semiaxis>6378137.0</semiaxis>
+        <denflat>298.257222101</denflat>
+      </geodetic>
+    </horizsys>
+    <vertdef>
+      <altsys>
+        <altdatum>North American Vertical Datum of 1988</altdatum>
+        <altres>0.01</altres>
+      	<altunits>feet</altunits>
+        <altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+      </altsys>
+    </vertdef>
+  </spref>
+  <metainfo>
+    <metd>20190830</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Woolpert</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>4454 Idea Center Blvd</address>
+          <city>Dayton</city>
+          <state>OH</state>
+          <postal>45430</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>(937)461-5660</cntvoice>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>

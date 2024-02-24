@@ -1,0 +1,336 @@
+---
+title: "CodeForSiteSelection"
+author: "Spencer See"
+date: "2024-02-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setting up the Code
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r Package Install, API Key, and Variable Table Download}
+census_api_key("PLACE CENSUS API KEY HERE", install = T)
+
+readRenviron("~/.Renviron")
+
+vars <- load_variables("2022", "acs1")
+View(vars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+#standard output
+
+acs_Mhi_County<- get_acs(
+  geography = "tract",
+  variables = "B19013_001",
+  state = "ohio")
+
+# wide for GIS
+
+acs_Mhi_County_Wide<- get_acs(
+  geography = "tract",
+  variables = "B19013_001",
+  state = "ohio",
+  output = "wide")
+
+#View(acs_Mhi_County_Wide)
+
+
+# Some Exploration
+oh_wide_varname <-get_acs(
+  geography = "tract",
+  state = "OH",
+  variables = c(medianIncome = "B19013_001",
+                medianAge = "B01002_001"),
+  output = "wide"
+)
+
+oh_wide_varname
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Gathering Variables of Interest in a Geospatially referenced format
+
+```{r Variables of Interest with Geospatial Binding}
+
+AvgPerCapitaIncomeAmerica <- 65423
+
+generic_var<-c(
+  AvPerCapitaIncome = "B19301_001",
+  MedianIncome = "B19013_001",
+  MedianAge = "B01002_001")
+
+
+race_var <-c(
+  White = "B03002_003",
+  Black = "B03002_004",
+  Native = "B03002_005",
+  Asian = "B03002_006",
+  HIPI = "B03002_007",
+  Hispanic = "B03002_012")
+
+dis_var <-c(
+  DisabilityTotal = "B10052_002",
+  DiGrandparentRespForChild = "B10052_008")
+  
+Ohio_ALL <- get_acs(
+  geography = "tract",
+  variables = c(generic_var,
+                dis_var,
+                race_var),
+  summary_var = "B03002_001",
+  state = "ohio",
+  output = "wide",
+  geometry = TRUE)
+
+head(Ohio_ALL)
+
+```
+## Cleaning and Modifying Data for Mapping
+
+tththt
+thththt
+hthtt
+
+```{R Filtering and Modifying Dowloaded Tables}
+
+MobilityNeed <- Ohio_ALL %>% 
+  mutate(DisabGranResChiPercE = 100 * (DiGrandparentRespForChildE /summary_est)) %>%
+  mutate(DisabGranResChiPercM = moe_prop(DiGrandparentRespForChildE,
+                                         summary_est,
+                                         DiGrandparentRespForChildM,
+                                         summary_moe)) %>%
+  mutate(DisabilityTotalPercE = 100 * (DisabilityTotalE/summary_est)) %>%
+  mutate(DisabilityTotalPercM = moe_prop(DisabilityTotalE, summary_est,
+                                         DisabilityTotalM, summary_moe)) %>%
+  filter(DisabilityTotalPercE >=3) %>%
+  filter(DiGrandparentRespForChildE > 0) %>%
+  filter(AvPerCapitaIncomeE < AvgPerCapitaIncomeAmerica) %>%
+  filter(summary_est >= 3000)
+
+
+GeneralNeed <- Ohio_ALL %>% 
+  mutate(DisabGranResChiPercE = 100 * (DiGrandparentRespForChildE /summary_est)) %>%
+  mutate(DisabGranResChiPercM = moe_prop(DiGrandparentRespForChildE,
+                                         summary_est,
+                                         DiGrandparentRespForChildM,
+                                         summary_moe)) %>%
+  mutate(DisabilityTotalPercE = 100 * (DisabilityTotalE/summary_est)) %>%
+  mutate(DisabilityTotalPercM = moe_prop(DisabilityTotalE, summary_est,
+                                         DisabilityTotalM, summary_moe)) %>%
+  filter(AvPerCapitaIncomeE < (AvgPerCapitaIncomeAmerica*0.75))
+  
+
+
+  
+MobilityNeed<- arrange(MobilityNeed, MedianIncomeE)
+
+summary(MobilityNeed)
+
+```
+
+
+## Using MapView to interact with data in R studio in spatial user interface
+
+```{r MapView}
+install.packages("mapview")
+library(mapview)
+library(sf)
+install.packages("leafsync")
+library(leafsync)
+
+
+oh_tracts<- tracts(state="OH", cb=T) #cb is cartigraphic boundary (cuts to Lake Erie Boundary)
+
+plot(oh_tracts$geometry)
+
+mapview(oh_tracts) # Testing the utility of Mapview to interact with maps in R
+
+
+install.packages("crsuggest")
+library(crsuggest)
+
+#tigris baked into tidy census so simply use geometry = T
+
+install.packages("mapview")
+library(mapview)
+install.packages("sf")
+library(sf)
+install.packages("leafsync")
+library(leafsync)
+
+
+oh_tracts<- tracts(state="OH", cb=T) #cb is cartographic boundary
+plot(oh_tracts$geometry)
+
+mapview(oh_tracts)
+
+
+install.packages("crsuggest")
+library(crsuggest)
+
+#tigris baked into tidycensus so just geomtry = T
+
+
+####
+#mapping with my data
+###
+
+mapview(MobilityNeed, zcol = "DiGrandparentRespForChildE")
+
+#show more than one layer
+
+mapview(oh_tracts) + mapview(MobilityNeed, zcol = "DisabGranResChiPercE")
+
+####
+# mapping with my data
+###
+
+mapview(MobilityNeed, zcol = "DiGrandparentRespForChildE")
+plot(MobilityNeed$geometry)
+
+#show more than one layer
+
+mapview(oh_tracts) + mapview(MobilityNeed, zcol = "DisabGranResChiPercE")
+
+```
+
+## Using Tmap to further explore and export data
+
+```{r TMAP}
+
+install.packages("tmap")
+library(tmap)
+
+tm_shape(MobilityNeed) + 
+  tm_polygons()
+
+install.packages("shinyjs")
+library(shinyjs)
+tmaptools::palette_explorer()
+#cviridis is scientifically tested for colorblindness
+
+# pallete paremter lets you chose different color value
+# Chloropleth should only be used for percents
+
+# style paramter can be set to "equal", "quantile", and "jenks"
+
+tm_shape(MobilityNeed) +
+  tm_polygons(col = "DisabilityTotalPercE",
+              style = "jenks",
+              n = 8,
+              palette = "Purples",
+              title = "percent Disabled Grandparents 
+Responsible for Dependents Under 18"
+  ) +
+  tm_layout(title = "FEMA BRIC Fundable Communities by Census Tracts
+with Heigthened Mobility and ADA Needs",
+  frame=FALSE,
+  legend.outside = TRUE)
+
+
+
+tm_shape(GeneralNeed) +
+  tm_polygons(col = "AvPerCapitaIncomeE",
+              style = "jenks",
+              n = 8,
+              palette = "Reds",
+              title = "percent Disabled Grandparents 
+Responsible for Dependents Under 18"
+  ) +
+  tm_layout(title = "FEMA BRIC Fundable Communities by Census Tracts
+with Heigthened Mobility and ADA Needs",
+frame=FALSE,
+legend.outside = TRUE)
+
+#st_write(MobilityNeed, "INSERT FILE PATH")
+#st_write(GeneralNeed, "INSERT FILE PATH") For writing to file
+
+
+# use st_write to output
+
+```
+
+
+## Processing DEM for further use in QGIS
+
+```{r}
+
+library(terra)
+library(tmap)
+install.packages("rastertopoints")
+dem <- rast("File Path to Merged DEM data")
+tm_shape(dem)+
+  tm_raster(style= "cont", palette="-Blues")+
+  tm_layout(legend.outside = TRUE)
+cells(dem)
+#over 14 million, way too many for rhino
+
+demEasy<-terra::aggregate(dem, fact = 200)
+
+tm_shape(demEasy)+
+  tm_raster(style= "cont", palette="-Blues")+
+  tm_layout(legend.outside = TRUE)
+# way too few
+
+demMedium<-terra::aggregate(dem, fact=1000)
+tm_shape(demMedium)+
+  tm_raster(style= "cont", palette="-Blues")+
+  tm_layout(legend.outside = TRUE)
+# oh inverting the logic of factor of aggregation as additive process
+
+demBetter<-terra::aggregate(dem, fact=10)
+tm_shape(demBetter)+
+  tm_raster(style= "cont", palette="-Blues")+
+  tm_layout(legend.outside = TRUE)
+cellSize(demBetter)
+cells(demBetter)
+
+cells(demBetter)
+139625+1000
+
+SampleDEM<-spatSample(demBetter, method = "regular", size = 140625, as.points = TRUE, xy= TRUE, values = TRUE)
+
+
+demSample<-spatSample(demBetter, method = "regular", size = 140625, as.df = TRUE, xy= TRUE, values = TRUE)
+
+
+#write.csv(demSample, "INSERT FILE PATH HERE" )
+
+crs(demBetter, proj=FALSE, describe=FALSE, parse=FALSE)
+crs(demBetter, proj=FALSE, describe=T, parse=FALSE)
+
+
+#375
+ncol(demBetter)
+#375
+
+
+demBetterProj <- project(demBetter, "EPSG:6318")
+
+demSampleProj<-spatSample(demBetterProj, method = "regular", size = 140625, as.df = TRUE, xy= TRUE, values = TRUE)
+View(demSampleProj)
+demRhino<- demSampleProj %>%
+  rename("X"=x, "Y"=y, "Z" = DEMmerged)
+
+sum(is.na(demRhino))
+demRhinoClean <- na.omit(demRhino)
+#write.csv(demRhinoClean, "INSERT FILE PATH HERE")
+
+
+demShapeFinal<-spatSample(demBetterProj, method = "regular", size = 140625, as.point = TRUE, xy= TRUE, values = TRUE)
+
+
+```
