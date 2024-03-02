@@ -3,6 +3,7 @@ title: "CodeForSiteSelection"
 author: "Spencer See"
 date: "2024-02-24"
 output: html_document
+email: spencersee@outlook.com
 ---
 
 ```{r setup, include=FALSE}
@@ -98,11 +99,10 @@ Ohio_ALL <- get_acs(
 head(Ohio_ALL)
 
 ```
+
 ## Cleaning and Modifying Data for Mapping
 
-tththt
-thththt
-hthtt
+tththt thththt hthtt
 
 ```{R Filtering and Modifying Dowloaded Tables}
 
@@ -140,7 +140,6 @@ MobilityNeed<- arrange(MobilityNeed, MedianIncomeE)
 summary(MobilityNeed)
 
 ```
-
 
 ## Using MapView to interact with data in R studio in spatial user interface
 
@@ -262,7 +261,6 @@ legend.outside = TRUE)
 # use st_write to output
 
 ```
-
 
 ## Processing DEM for further use in QGIS
 
