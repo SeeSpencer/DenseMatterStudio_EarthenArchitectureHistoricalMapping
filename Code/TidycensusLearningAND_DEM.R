@@ -1,4 +1,6 @@
-
+install.packages("gitcreds")
+library(gitcreds)
+gitcreds_set()
 
 install.packages("tidycensus")
 library(tidycensus)
